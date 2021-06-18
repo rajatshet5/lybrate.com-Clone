@@ -3,10 +3,13 @@
   box-sizing: border-box;
   max-width: 1280px;
 }
-
 body {
   background-color: #eee;
   margin: 0px;
+}
+.indexImages {
+  width: 30px;
+  height: 30px;
 }
 #headerStrip {
   background-color: rgb(235, 238, 243);
@@ -243,6 +246,7 @@ html {
   display: flex;
   flex-direction: row;
   width: 100%;
+  margin-bottom: 0px !important;
 }
 #homeContTop > .homeContDivOne > a:nth-child(3) p {
   margin-left: -6%;
@@ -304,17 +308,18 @@ html {
 }
 #homeContTop .goodKart > button {
   width: 100%;
-  height: 100%;
+  height: 80%;
   background: #c82506;
+  border: 1px solid #c82506;
   border-radius: 20px;
-  font-size: 14px;
+  font-size: 12px;
   color: white;
   cursor: pointer;
   overflow: hidden;
 }
 
 .goodKart > button > span {
-  font-size: 24px;
+  font-size: 19px;
 }
 #contTwo {
   display: flex;
@@ -328,7 +333,8 @@ html {
   text-decoration: none;
   color: black;
   margin-right: 3%;
-  margin-top: 10px;
+  margin-top: 3px;
+  margin-bottom: 3px;
   white-space: nowrap;
 }
 #contThree {
