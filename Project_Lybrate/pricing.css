@@ -154,10 +154,11 @@ body {
   width: 100%;
   height: 100%;
   background-color: #c82506;
+  border: 1px solid #c82506;
   color: white;
   font-size: 18px;
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 5px;
   cursor: pointer;
 }
 #prcLybratePrcicing > div > .prcFooterButtonText > div > button:hover,
