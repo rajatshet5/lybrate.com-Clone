@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style type="text/css">
+        * {
+            font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+        #docProfile {
+            display: flex;
+            flex-direction: column;
+            width: 60%;
+            margin: 30px auto;
+        }
+        #docProfile > div {
+            margin-bottom: 30px;
+            background-color: white;
+        }
+        #docProfile > div:nth-child(1) {
+            height: 100px;
+        }
+        #docProfile > div:nth-child(2) {
+            height: 300px;
+        }
+        #docProfile > div:nth-child(3) {
+            height: 230px;
+        }
+        #assurance {
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+        }
+        #assurance > div {
+            text-align: center;
+            margin-top: 0px;
+            padding-top: 15px;
+            display: flex;
+            justify-content:space-between;
+            border-top: 1px solid rgb(221, 218, 218);
+        }
+        #assurance > div > div {
+            display: flex;
+            flex-direction: column;
+            padding: 1%;
+            justify-content: center;
+            margin-top: 0px;
+        }
+        #assurance img {
+            width: 40px;
+            margin: auto;
+        }
+        #ap {
+            width: 100%;
+            height: 10%;
+        }
+        body {
+            margin: 0px;
+            background-color: rgba(238,238,238,255);
+        }
+        #indexOnline {
+            display: flex;
+            justify-content: space-between;
+            background-color: white;
+            align-items: center;
+            color: grey;
+            height: 50px;
+            margin-bottom: 50px;
+        }
+        #indexOnline > div {
+            display: flex;
+            justify-content: flex-end;
+        }
+        #indexOnline > div > p {
+            margin: 5px 10px;
+        }
+        #indexOnline img {
+            height: 50%;
+            margin: 0px 35px;
+        }
+        #tcp > i:nth-child(2),#pcp > i:nth-child(2),#vcp > i:nth-child(2) {
+            margin-right: 0px;
+        }
+        #mode {
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+        }
+        #mode > div {
+            display: flex;
+            margin-top: 0px;
+            margin-bottom: 0px;
+            height: 35%;
+            padding: 10px;
+            align-items: center;
+            border-top:  1px solid rgb(221, 218, 218);
+        }
+        #mode > div > div:nth-child(1) {
+            width: 45%;
+        }
+        #mode > div > div:nth-child(2) {
+            width: 25%;
+        }
+        #mode > div > div:nth-child(3) {
+            width: 30%;
+        }
+        #mode button {
+            background-color: rgba(200,37,6,255);
+            border: 1px solid rgba(200,37,6,255);
+            color: white;
+            width: 100%;
+            height: 40px;
+            cursor: pointer;
+        }
+        #mode button:hover {
+            background-color: rgb(126, 23, 3);
+            border: 1px solid rgb(126, 23, 3);
+        }
+        #mode h4, #mode p {
+            margin: 0px;
+        }
+        #mode p {
+            font-size: 15px;
+        }
+        .flexRow {
+            display: flex;
+        }
+        i {
+            color: rgb(94, 92, 92);
+            font-size: 15px;
+            margin-right: 8px;
+        }
+        .subHeading {
+            color: gray;
+            font-size: 19px;
+            margin: 5px 8px;
+            padding: 10px;
+        }
+        #docDetails1 > div > p, #docDetails p {
+            margin: 0px;
+            font-size: 14px;
+            color: grey;
+        }
+        #docDetails {
+            display: flex;
+            justify-content: space-between;
+            padding: 23px;
+        }
+        #indexOnline > img, #indexOnline p {
+            cursor: pointer;
+        }
+        #bookingConfirmed {
+            width: 70%;
+            height: 100px;
+            background-color: white;
+            margin: 30px auto;
+            padding: 15px;
+            text-align: center;
+            border-radius: 1px;
+            border: 1px solid rgb(151, 29, 4);
+        }
+        #bookingConfirmed img {
+            width: 100px;
+            height: 80px;
+            border-radius: 50px;
+            margin: 5px;
+        }
+        span {
+            font-weight: 800;
+            color: rgb(151, 29, 4);
+        }
+        #p_det {
+            width: 65%;
+            font-size: 17px;
+        }
+        #docDetails1 img {
+            height: 80%;
+            width: 80px;
+            border-radius: 40px;
+            margin-right: 15px;
+        }
+        #docName {
+            font-size: 19px !important;
+            color: rgb(48, 47, 47) !important;
+        }
+        #tc, #pc, #vc {
+            font-size: 13px !important;
+            color: grey;
+        }
+        @media (max-width: 900px) {
+            #docProfile {
+                width: 90%;
+            }
+            #assurance > div {
+                text-align: center;
+                margin-top: 0px;
+                padding-top: 15px;
+                display: flex;
+                flex-direction: column;
+                justify-content:space-between;
+                border-top: 1px solid rgb(221, 218, 218);
+            }
+            #docProfile > div:nth-child(3) {
+                height: 530px;
+            }
+        }
+        </style>
+    </head>
+    <body>
+        <script src="https://kit.fontawesome.com/afe9d36b7f.js" crossorigin="anonymous"></script>
+        <div id="indexOnline">
+            <img onclick="goToHome()" src="https://nu.lybcdn.com/img/lybrate-logo-new.png" />
+            <div id="header">
+                <p>Download App</p>
+                <p onclick="goToDoctorLogin()">For Doctors</p>
+            </div>
+        </div>
+        <div id="docProfile">
+            <div id="docDetails">
+                <div id="docDetails1">
+
+                </div>
+                <div id="docDetails2">
+                    <p id="exp"></p>
+                </div>
+            </div>
+            <div id="mode">
+                <p class="subHeading">CHOOSE MODE OF CONSULTATION</p>
+                <div>
+                    <div>
+                        <h4>Text Consult</h4>
+                        <p id="tc"></p>
+                    </div>
+                    <div id="mid">
+                        <p id="tcp"></p>
+                    </div>
+                    <div>
+                        <button onclick="consult('text')">Consult Now</button>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <h4>Phone Consult</h4>
+                        <p id="pc"></p>
+                    </div>
+                    <div>
+                        <p id="pcp"></p>
+                    </div>
+                    <div>
+                        <button onclick="consult('phone')">Consult Now</button>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <h4>Video Consult</h4>
+                        <p id="vc"></p>
+                    </div>
+                    <div>
+                        <p id="vcp"></p>
+                    </div>
+                    <div>
+                        <button onclick="consult('video')">Consult Now</button>
+                    </div>
+                </div>
+                
+            </div>
+            <div id="assurance">
+                <p id="ap" class="subHeading">LYBRATE ASSURANCE</p>
+                <div>
+                    <div>
+                        <img src="https://nu.lybcdn.com/img/askQ/ic-ly-doctor.png" />Verified Doctors
+                        <p>All Doctors go through a stringent verification process on Lybrate</p>
+                    </div>
+                    <div>
+                        <img src="https://nu.lybcdn.com/img/askQ/ic-ly-privacy.png" />100% Privacy Protection
+                        <p>Your consultation details and personal data will remain confidential</p>
+                    </div>
+                    <div>
+                        <img src="https://nu.lybcdn.com/img/askQ/ic-ly-quick.png" />Satisfaction Guaranteed
+                        <p>If you are not satisfied with your experience, we will refund your money</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+        let docStatus = localStorage.getItem('LID');
+       
+        let userStatus = localStorage.getItem('LIU');
+        
+        if(docStatus == null && userStatus == null) {
+            var isLoggedIn = false;
+            let p = document.createElement('p');
+            p.textContent = "Login/Signup";
+            p.style.cursor = "pointer";
+            p.addEventListener('click', goToUserLogin);
+            document.getElementById("header").appendChild(p);
+        } else {
+            var isLoggedIn = true;
+            let p = document.createElement('p');
+            p.textContent = "Logout";
+            p.style.cursor = "pointer";
+            p.addEventListener('click', logout);
+            document.getElementById("header").appendChild(p);
+        }
+        function goToHome() {
+            window.location.href = "home2.html";
+        }
+        function goToDoctorLogin() {
+            window.location.href = "doctorLogin.html";
+        }
+        function goToUserLogin() {
+            window.location.href = "userLogin.html";
+        }
+        function logout() {
+            localStorage.removeItem('LIU');
+            localStorage.removeItem('LID');
+            window.location.href = "onlineProfile.html";
+        }
+        let doc = JSON.parse(localStorage.getItem('currentDoc'));
+        let docDetails1 = document.getElementById("docDetails1");
+        let img = document.createElement('img');
+        img.src = doc.image;
+        let p1 = document.createElement('p');
+        p1.textContent = `Dr. ${doc.name}`;
+        p1.id = "docName";
+        let p2 = document.createElement('p');
+        p2.textContent = doc.edu;
+        let p3 = document.createElement('p');
+        p3.textContent = doc.speciality;
+        let p4 = document.createElement('p');
+        p4.textContent = doc.city;
+        let subDiv = document.createElement('div');
+        subDiv.append(p1, p2, p3, p4);
+        docDetails1.append(img, subDiv);
+        docDetails1.style.display = "flex";
+        document.getElementById("exp").innerHTML = `<i class="fas fa-briefcase-medical"></i>${doc.experience} years of Experience`;
+        document.getElementById("tc").textContent = `${doc.tc} days validity`;
+        document.getElementById("tcp").innerHTML = `<i class="far fa-credit-card"></i><i class="fas fa-rupee-sign"></i>${doc.tcp}`;
+        document.getElementById("pc").textContent = `${doc.tc} minutes duration - 24 hours text chat`;
+        document.getElementById("pcp").innerHTML = `<i class="far fa-credit-card"></i><i class="fas fa-rupee-sign"></i>${doc.pcp}`;
+        document.getElementById("vc").textContent = `${doc.vc} minutes duration - 24 hours text chat`;
+        document.getElementById("vcp").innerHTML = `<i class="far fa-credit-card"></i><i class="fas fa-rupee-sign"></i>${doc.vcp}`;
+
+        function consult(a) {
+            let user = localStorage.getItem('LIU');
+            let currentDoc = JSON.parse(localStorage.getItem('currentDoc'));
+            if(user == null) {
+                window.location.href = "userLogin.html";
+            } else {
+                user = JSON.parse(user);
+                let requests = localStorage.getItem('requests');
+                if(requests == null) {
+                    requests = [];
+                } else {
+                    requests = JSON.parse(requests);
+                }
+                let request = { 
+                    from: user.email,
+                    to: currentDoc.email,
+                    name: user.name,
+                    phone: user.phone,
+                    type: a,
+                }
+                let alreadyBooked = false;
+                for(let i = 0; i < requests.length; i++) {
+                    if(request.from == requests[i].from && request.to == requests[i].to && request.type == requests[i].type) {
+                        alert(`You have already booked a ${a} consultation with Dr. ${currentDoc.name}`);
+                        alreadyBooked = true;
+                        break;
+                    } 
+                }
+                if(!alreadyBooked) {
+                    console.log(typeof(requests));
+                    requests.push(request);
+                    localStorage.setItem('requests', JSON.stringify(requests));
+                    alert(`Online ${a} consultation booked with Dr. ${currentDoc.name}`);
+                    document.getElementById("docProfile").innerHTML = null;
+                    let div = document.createElement('div');
+                    let image = document.createElement('img');
+                    image.src = currentDoc.image;
+                    let p_det = document.createElement('p');
+                    p_det.setAttribute('id', 'p_det');
+                    p_det.innerHTML = `Online ${a} consultation booked with <span>Dr. ${currentDoc.name}</span>`;
+                    div.append(image, p_det);
+                    div.setAttribute('id', 'bookingConfirmed');
+                    div.setAttribute('class', 'flexRow');
+                    div.style.flexWrap = "wrap";
+                    document.getElementById("docProfile").append(div);
+                }
+            }
+        }
+        </script>
+    </body>
+</html>
+
+

@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Feed</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="hf.css">
+    <style type="text/css">
+    body {
+        background-color: rgba(238, 238, 238, 255);
+    }
+    #newAnswers {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .docDiv, .contactDiv {
+        display: flex;
+    }
+    #newAnswers > div{
+        margin: 15px 0px 15px;
+        background-color: white;
+    }
+    .docDiv {
+        height: 50px;
+        margin-bottom: 15px;
+    }
+    .docDiv img {
+        height: 100%;
+        margin: 3px 23px 3px 10px;
+        border-radius: 50px;
+    }
+    .docDiv h3, .docDiv p {
+        margin: 1px;
+    }
+    .docDiv h3 {
+        font-size: 16px;
+        font-weight: 800;
+    }
+    .docDiv p {
+        font-size: 14px;
+        color: grey;
+    }
+    .queDiv {
+        font-weight: 700;
+        margin: 5px 5px 15px;
+        font-size: 19px;
+        display: flex;
+    }
+    .ansDiv {
+        height: 51%;
+        margin: 5px;
+        display: flex;
+        flex-wrap: wrap;
+        font-size: 15px;
+    }
+    .ansDiv p {
+        width: 100%;
+    }
+    .contactDiv {
+        border: 1px solid black;
+        height: 50px;
+    }
+    .contactDiv button {
+        flex-grow: 1;
+        background-color: rgba(246, 247, 249, 255);
+        border: 1px solid rgb(218, 218, 221);
+        cursor: pointer;
+    }
+    .contactDiv button:hover {
+        background-color: rgb(229, 233, 236);
+    }
+    #lyb {
+        width: 100%;
+        height: 60px;
+        margin-bottom: 40px;
+        padding: 15px;
+        background-color: white;
+        display: flex;
+    }
+    #lyb > div {
+        width: 17%;
+        display: flex;
+        cursor: pointer;
+        align-items: center;
+    }
+    #lyb > img {
+        cursor: pointer;
+        margin-right: 300px;
+    }
+    #status {
+        height: 30px;
+        display: flex;
+        justify-content:flex-end;
+        align-items: center;
+        background-color: rgba(235,238,243,255);
+        margin:0px;
+    }
+    #status > p {
+        margin-left: 21px;
+        cursor: pointer;
+        font-size: 13px;
+    }
+    @media (max-width: 800px) {
+            #lyb > img {
+            cursor:pointer;
+            margin-right: 15px;
+            width: 15%;
+            height: 80%;
+            padding: 5px;
+            }
+            #lyb p {
+                font-size: 10px;
+            }
+            #lyb > div {
+                margin: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <script src="https://kit.fontawesome.com/afe9d36b7f.js" crossorigin="anonymous"></script>
+    <div id="status">
+        <p>Get the App</p>
+        <p onclick="goToDoctorSignup()">For Doctors</p>
+        <p onclick="goToHealthFeed()">Health Feed</p>
+    </div>
+    <div id="lyb">
+        <img onclick="goToHome()" src="https://doctor.lybrate.com/img/lybrate-logo.png" />
+        <div onclick="goToAskQuestions()">
+            <img src="https://assets.lybrate.com/q_auto,f_auto,h_28,w_28,c_fill/imgs/product/Homepage/Ask-Question.png" />
+            <p>Ask a Question</p>
+        </div>
+        <div onclick="bookAppointment()">
+            <img
+                src="https://assets.lybrate.com/q_auto,f_auto,h_28,w_28,c_fill/imgs/product/Homepage/Book-Appointment.png" />
+            <p>Book Appointment</p>
+        </div>
+        <div onclick="consultOnline()">
+            <img src="https://assets.lybrate.com/q_auto,f_auto,h_28,w_28,c_fill/imgs/product/Homepage/Consult-Online.png" />
+            <p>Consult Online</p>
+        </div>
+        <div onclick="goToBookLabTest()">
+            <img src="https://assets.lybrate.com/q_auto,f_auto,h_28,w_28,c_fill/imgs/product/Homepage/Book-Lab-test.png" />
+            <p>Book Lab Test</p>
+        </div>
+    </div>
+     <div>
+         <div id="hfSearchPart">
+             <div id="inputBox">
+               <input type="text" id="searchKey" placeholder="Search for any health keyword" >
+            </div>
+            <div id="hfSearchButton">
+               <button onclick="searchAns()">Search</button>
+            </div>
+         </div>
+     </div>
+     <div>
+         <div id="hfSmallHeading">
+           <a><span>Home</span> > Health Feed</a>
+        </div>
+     </div>
+     <div>
+         <div id="hfBigHeading">
+            <h4>Health Feed - Articles, Q&As, Quizzes and More</h4>
+         </div>
+     </div>
+     <div id="hfSearchResults"></div>
+     <div id="hfAllBoxes">
+     <div id="ask-questionBoxAndImg">
+        <div id="ask-questionBox">
+            <form>
+                <div card header class="ask-question-header">
+                    <i class="far fa-comment-alt"></i> 
+                    <div>Ask a Question</div>
+                    <div>Get FREE multiple opinions from Doctors</div>
+                </div>
+                <div card content class="ask-question-input">
+                    <textarea id="que" type="text" name="message" style="text-align:left;"
+                        placeholder="Enter question for you or someone else. E.g. my left eye is red and swollen"
+                        required></textarea>
+                </div>
+                <div card footer class="ask-question-footer">
+                    <span>Posted Anonymously</span>
+                    <button onclick="freshQue(event)" type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+        <div id="covidCarePlan">
+            <img src="https://assets.lybrate.com/q_auto,f_auto/rio/800x800/Lybrate_Covid-Care_Banner_320x235_18-05-2021.jpg"
+                alt="">
+        </div>
+    </div>
+    <div id="hfFlexBox">
+        <div id="hfLybrateGold">
+            <div>
+               <img src="https://assets.lybrate.com/swan/patmem/LybrateGold_Color.png" alt="">
+            </div>
+            <div>
+               <h4>Lybrate gold</h4>
+               <p>Become a member today and enjoy limitless health privileges, Good health made easy!</p>
+            </div>
+            <div><i class="fas fa-chevron-right"></i></div>
+        </div>
+        <div id="newAnswers">
+
+        </div>
+        <div>
+            <div class="hfContent">
+                <div>
+                <div class="hfContentSmallHead">
+                    <a>Health Query</a>
+                </div>
+                <div class="hfUserPress">
+                    <div><i class="fas fa-flag"></i></div>
+                    <div><i class="fas fa-bookmark"></i></div>
+                    <div><i class="fas fa-share"></i></div>
+                </div>
+                </div>
+                <div class="hfHeaderContent">
+                    <p>From 2 weeks I press on upper right ribs feels dull pain and after walking or running feels more dull pain after press that region and feel little tender this area. When I rest feel no pain but activity triggers pain I have done chest x ray but its normal. Please suggest for this.</p>
+                </div>
+                <div class="line"></div>
+                <div class="hfDoctorProfile">
+                    <div>
+                        <img src="https://assets.lybrate.com/q_auto:low,f_auto,h_80,w_80,c_fill,g_auto:face/img/documents/doctor/dp/359daea09244704aeedbf4ce2c0445bf/Homeopathy-KarunaChawla-75ed92" alt="">
+                    </div>
+                    <div class="hfDoctorProfileInfo">
+                        <p>Dr.Karuna Chawla</p>
+                        <p>BHMS</p>
+                        <p>Homeopathy Doctor, Noida - 25yrs exp</p>
+                    </div>
+                </div>
+                <div class="hfContentImg">
+                    <img src="https://assets.lybrate.com/q_auto:eco,f_auto,w_850/imgs/tic/reducing-joint-muscle-pains/male/reducing-joint-muscle-pains-male-01.jpg" alt="">
+                </div>
+                <div class="hfBottomContent">
+                    <p>What is your age ? Since when are you having this? What are other symptoms that you are experiencing? By doing what like walking, exertion, eating or empty stomach - it increases or decreases in intensity. For how much time it remains? <br> Is there stiffness also? How is your appetite? Are you constipated or having loose stools? <br> Any problem in urine? I need details of the case. <br> In the meanwhile follow this 1. Take ...<span>more</span></p>
+                </div>
+            </div>
+            <div class="hfFooterButtons">
+                <button><i class="fas fa-pen-square"></i>Submit Feedback</button>
+                <button><i class="fas fa-comments"></i>Consult Online</button>
+                <button><i class="fas fa-calendar-check"></i>Book Appointment</button>
+            </div>
+        </div>
+        <div>
+            <div class="hfContent">
+                <div>
+                    <div class="hfContentSmallHead">
+                        <a>Asked for male, 48years old from Thanjavur</a>
+                    </div>
+                    <div class="hfUserPress">
+                        <div><i class="fas fa-flag"></i></div>
+                        <div><i class="fas fa-bookmark"></i></div>
+                        <div><i class="fas fa-share"></i></div>
+                    </div>
+                </div>
+                <div class="hfHeaderContent">
+                    <p>Hi doctor I am diabetic patients can I take neurobian tablet with diabetic tablet.</p>
+                </div>
+                <div class="line"></div>
+                <div class="hfDoctorProfile">
+                    <div>
+                        <img src="https://assets.lybrate.com/q_auto:low,f_auto,h_80,w_80,c_fill,g_auto:face/img/documents/doctor/dp/6fa852aab348f67a5fe277a272244195/Endocrinology-SanthoshCAbraham-Kochi-dbf3b2.jpg"
+                            alt="">
+                    </div>
+                    <div class="hfDoctorProfileInfo">
+                        <p>Santhosh C Abraham</p>
+                        <p>MRCP (UK), MRCGP int, MRCP ENDOCRINOLOGY, MBBS</p>
+                        <p>Endocrinologist, Thrissur - 17yrs exp</p>
+                    </div>
+                </div>
+                <div class="hfContentImg">
+                    <img src="https://assets.lybrate.com/q_auto:eco,f_auto,w_850/imgs/tic/living-with-diabetes/male/living-with-diabetes-male-02.jpg"
+                        alt="">
+                </div>
+                <div class="hfBottomContent">
+                    <p>You can take it with your regular medications. However the cornerstone of diabetes management depends on diet and exercise too.</p>
+                </div>
+            </div>
+            <div class="hfFooterButtons">
+                <button><i class="fas fa-pen-square"></i>Submit Feedback</button>
+                <button><i class="fas fa-comments"></i>Consult Online</button>
+                <button><i class="fas fa-calendar-check"></i>Book Appointment</button>
+            </div>
+        </div>
+        <div>
+            <div class="hfContent">
+                <div>
+                    <div class="hfContentSmallHead">
+                        <a>Asked for female, 26years old from Bangalore</a>
+                    </div>
+                    <div class="hfUserPress">
+                        <div><i class="fas fa-flag"></i></div>
+                        <div><i class="fas fa-bookmark"></i></div>
+                        <div><i class="fas fa-share"></i></div>
+                    </div>
+                </div>
+                <div class="hfHeaderContent">
+                    <p>I have a pigmentation on my cheecks n nose, it started when I was pregnant, now I have 2 months baby. Before was using brevoxyl face wash n d-acne gel, now face wash banned. So may I know the creams to clear pigment mark's on my face as soon as possible.</p>
+                </div>
+                <div class="line"></div>
+                <div class="hfDoctorProfile">
+                    <div>
+                        <img src="https://assets.lybrate.com/q_auto:low,f_auto,h_80,w_80,c_fill,g_auto:face/img/documents/doctor/dp/9c111c9f5267f0ab780e7644ac07678e/Dermatology-ShivaliSethi-Delhi-8bbf90"
+                            alt="">
+                    </div>
+                    <div class="hfDoctorProfileInfo">
+                        <p>Dr.Shivali Sethi</p>
+                        <p>D.D.V.L, F.A.C.S.I, M.B.B.S</p>
+                        <p>Dermatologist, Delhi - 17yrs exp</p>
+                    </div>
+                </div>
+                <div class="hfContentImg">
+                    <img src="https://assets.lybrate.com/q_auto:eco,f_auto,w_850/imgs/tic/improving-skin-health/male/improving-skin-health-male-102.jpg"
+                        alt="">
+                </div>
+                <div class="hfBottomContent">
+                    <p>The exact causes of pigmentation are unclear, common triggers include sun exposure, uv light, pregnancy, birth control pills, skin irriants like dyes, perfumes, oils, hair dye and cosmetics. Wear sunscreen daily. Choose gentle skin  care products and kindly review by sending your pics online as you might be having acne scar, so tratment need to be reviewed based on requirements.</p>
+                </div>
+            </div>
+            <div class="hfFooterButtons">
+                <button><i class="fas fa-pen-square"></i>Submit Feedback</button>
+                <button><i class="fas fa-comments"></i>Consult Online</button>
+                <button><i class="fas fa-calendar-check"></i>Book Appointment</button>
+            </div>
+        </div>
+        <div>
+            <div class="hfContent">
+                <div>
+                    <div class="hfContentSmallHead">
+                        <a>Asked for male, 16years old from Kanpur</a>
+                    </div>
+                    <div class="hfUserPress">
+                        <div><i class="fas fa-flag"></i></div>
+                        <div><i class="fas fa-bookmark"></i></div>
+                        <div><i class="fas fa-share"></i></div>
+                    </div>
+                </div>
+                <div class="hfHeaderContent">
+                    <p>I am 16 years old and I am worried about my hair fall I shed 50-100 hairs daily and more during oiling so can I take evion tablet or evion has any side effects on body.</p>
+                </div>
+                <div class="line"></div>
+                <div class="hfDoctorProfile">
+                    <div>
+                        <img src="https://assets.lybrate.com/q_auto:low,f_auto,h_80,w_80,c_fill,g_auto:face/img/documents/doctor/dp/418fd0875b98e604669aa561225a8a34/Dermatology-NarasimhaluCrv-Chennai-b7b784.JPG"
+                            alt="">
+                    </div>
+                    <div class="hfDoctorProfileInfo">
+                        <p>Dr.Narasimhalu C.R.V.(Professor)</p>
+                        <p>MD, MBBS</p>
+                        <p>Dermatologist, Chennai - 22yrs exp</p>
+                    </div>
+                </div>
+                <div class="hfContentImg">
+                    <img src="https://assets.lybrate.com/q_auto:eco,f_auto,w_850/imgs/tic/managing-hair-loss/male/Managing-Hair-Loss-male-06.jpg"
+                        alt="">
+                </div>
+                <div class="hfBottomContent">
+                    <p>You are suffering from hormonal changes causing androgenetic alopecia causing hair fall. It's completely stoppable even regrowth of hair is possible with certain medications without any side effects. Treatment depends on the grade of hair loss. So, it's a must for diagnosing which grade, you are in for an effective treatment. Please send photos of your head, by direct online consultation for accurate diagnosis and proper treatment.</p>
+                </div>
+            </div>
+            <div class="hfFooterButtons">
+                <button><i class="fas fa-pen-square"></i>Submit Feedback</button>
+                <button><i class="fas fa-comments"></i>Consult Online</button>
+                <button><i class="fas fa-calendar-check"></i>Book Appointment</button>
+            </div>
+        </div>
+        <div>
+            <div class="hfContent">
+                <div>
+                    <div class="hfContentSmallHead">
+                        <a>Asked for male, 54years old from Kota</a>
+                    </div>
+                    <div class="hfUserPress">
+                        <div><i class="fas fa-flag"></i></div>
+                        <div><i class="fas fa-bookmark"></i></div>
+                        <div><i class="fas fa-share"></i></div>
+                    </div>
+                </div>
+                <div class="hfHeaderContent">
+                    <p>My blood suger vary from 150 to 220pp medicine before breakfast blisto 1mf plus before dinner metformin 500sr.</p>
+                </div>
+                <div class="line"></div>
+                <div class="hfDoctorProfile">
+                    <div>
+                        <img src="https://assets.lybrate.com/q_auto:low,f_auto,h_80,w_80,c_fill,g_auto:face/img/documents/doctor/dp/2dab3f5c2b37df4c855e8b530268b77b/Endocrinology-PrabhakarLaxmanJatharJathar-vharwad-40bb88.JPG"
+                            alt="">
+                    </div>
+                    <div class="hfDoctorProfileInfo">
+                        <p>Dr.Prabhakar Laxman Jathar</p>
+                        <p>MBBS, CCEBDM, Diploma in Diabetology, Diploma in clinical Nutrition & Diebetics</p>
+                        <p>Endocrinologist, Dharwad - 50yrs exp</p>
+                    </div>
+                </div>
+                <div class="hfContentImg">
+                    <img src="https://assets.lybrate.com/q_auto:eco,f_auto,w_850/imgs/tic/managing-blood-sugar/male/managing-blood-sugar-male-01.jpg"
+                        alt="">
+                </div>
+                <div class="hfBottomContent">
+                    <p>Mr. lybrate-user, thanks for the query. <br>
+                    I have seen the query. The information is not enough to give any specific suggestion. I need to know following details
+                    :exact fasting, pp glucose, hba1c%, dietary pattern, extent of exercises being done daily, lipid profile, bp readings,
+                    serum creatinine and urea. Without all the details, it is not possible to give any specific suggestions.
+                    So please do come...<span>more</span></p>
+                </div>
+            </div>
+            <div class="hfFooterButtons">
+                <button><i class="fas fa-pen-square"></i>Submit Feedback</button>
+                <button><i class="fas fa-comments"></i>Consult Online</button>
+                <button><i class="fas fa-calendar-check"></i>Book Appointment</button>
+            </div>
+        </div>
+        <div>
+            <div class="hfContent">
+                <div>
+                    <div class="hfContentSmallHead">
+                        <a>Health Query</a>
+                    </div>
+                    <div class="hfUserPress">
+                        <div><i class="fas fa-flag"></i></div>
+                        <div><i class="fas fa-bookmark"></i></div>
+                        <div><i class="fas fa-share"></i></div>
+                    </div>
+                </div>
+                <div class="hfHeaderContent">
+                    <p>From 2 weeks when I press on upper right ribs feels dull pain and after walking or running feels more dull pain after
+                    press that region and feel little tender this area. When I rest feel no pain but activity triggers pain I have done
+                    chest x ray but its normal. Please suggest for this.</p>
+                </div>
+                <div class="line"></div>
+                <div class="hfDoctorProfile">
+                    <div>
+                        <img src="https://assets.lybrate.com/q_auto:low,f_auto,h_80,w_80,c_fill,g_auto:face/img/documents/doctor/dp/84cab538fa8a14015a9360a8264faeb4/Cardiology-ColVCGoyal-ghaziabad-ce5cf4.jpg"
+                            alt="">
+                    </div>
+                    <div class="hfDoctorProfileInfo">
+                        <p>Dr.Col V C Goyal</p>
+                        <p>CCEBDM, PG Diploma In Clinical Cardiology, MBBS</p>
+                        <p>General Physician, Ghaziabad - 45yrs exp</p>
+                    </div>
+                </div>
+                <div class="hfContentImg">
+                    <img src="https://assets.lybrate.com/q_auto:eco,f_auto,w_850/imgs/tic/reducing-joint-muscle-pains/male/reducing-joint-muscle-pains-male-09092.jpg"
+                        alt="">
+                </div>
+                <div class="hfBottomContent">
+                    <p>1.no alcohol
+                    2. Reduce body weight 3. No smoking/ tobacco/drugs/ avoid pollution
+                    4. Diet - no ghee/ butter, have mix of vegetable oils - mustard, til, ground nut, olive oil, have more green vegetables
+                    and fruits, have whole grain atta, no fried. Fast. Spicy / processed/ junk food. Less sugar, potato, rice
+                    5. 30 mts brisk walk daily 6. Deep breathing exercise for 10 mts daily
+                    7. Meditation daily fo...<span>more</span></p>
+                </div>
+            </div>
+            <div class="hfFooterButtons">
+                <button><i class="fas fa-pen-square"></i>Submit Feedback</button>
+                <button><i class="fas fa-comments"></i>Consult Online</button>
+                <button><i class="fas fa-calendar-check"></i>Book Appointment</button>
+            </div>
+        </div>
+        <div>
+            <div class="hfContent">
+                <div>
+                    <div class="hfContentSmallHead">
+                        <a>Asked for male, 21years old from Kurukshetra</a>
+                    </div>
+                    <div class="hfUserPress">
+                        <div><i class="fas fa-flag"></i></div>
+                        <div><i class="fas fa-bookmark"></i></div>
+                        <div><i class="fas fa-share"></i></div>
+                    </div>
+                </div>
+                <div class="hfHeaderContent">
+                    <p>Hi I am having hair loss and thinning since 2 years.
+                    L have a lot of white stuff coming from my scalp
+                    and sebum too. And scalp become itchy and
+                    tender too sometimes .and after scratching hair
+                    came out with roots. Last year doctor suggested to use nizral shampoo but it didn't helped a lot and I applied
+                    minoxidil too as suggested by doctors but it didn't helped much as well and now I am so depressed because of my hair
+                    loss and thinning as I am only
+                    22 can someone please help I can book an
+                    appointment online as in lives in australia.
+                    Thanks please reply. Thanks again.</p>
+                </div>
+                <div class="line"></div>
+                <div class="hfDoctorProfile">
+                    <div>
+                        <img src="https://assets.lybrate.com/q_auto:low,f_auto,h_80,w_80,c_fill,g_auto:face/img/documents/doctor/dp/fdc94fde0a3095862800f70d5641d41a/Dermatology-MadhaviPudi-Hyderabad-bc6172.jpg"
+                            alt="">
+                    </div>
+                    <div class="hfDoctorProfileInfo">
+                        <p>Dr.Madhavi Pudi</p>
+                        <p>DNB(Dermatology), MBBS, Diploma in Trichology - Cosmetology</p>
+                        <p>Dermatologist, Hyderabad - 10yrs exp</p>
+                    </div>
+                </div>
+                <div class="hfContentImg">
+                    <img src="https://assets.lybrate.com/q_auto:eco,f_auto,w_850/imgs/tic/managing-hair-loss/male/managing-hair-loss-male-09093.jpg"
+                        alt="">
+                </div>
+                <div class="hfBottomContent">
+                    <p>Hi! hair loss can be due to various reasons, genetic, hormonal, nutritional, dandruff, stress ,pollution etc. We have to
+                    examine the scalp to know the reason for hair loss. If dandruff is present, it should be checked and be controlled in
+                    this age group. Blood tests like cbpesr ,tsh, lft, rbs, s.ferritin levels, s.b12 levels, s.vitamin d levels,
+                    s.testosterone levels need to be checked to know the...<span>more</span></p>
+                </div>
+            </div>
+            <div class="hfFooterButtons">
+                <button><i class="fas fa-pen-square"></i>Submit Feedback</button>
+                <button><i class="fas fa-comments"></i>Consult Online</button>
+                <button><i class="fas fa-calendar-check"></i>Book Appointment</button>
+            </div>
+        </div>
+        <div>
+            <div class="hfContent">
+                <div>
+                    <div class="hfContentSmallHead">
+                        <a>Asked for male, 28years old from Bareilly</a>
+                    </div>
+                    <div class="hfUserPress">
+                        <div><i class="fas fa-flag"></i></div>
+                        <div><i class="fas fa-bookmark"></i></div>
+                        <div><i class="fas fa-share"></i></div>
+                    </div>
+                </div>
+                <div class="hfHeaderContent">
+                    <p>I am 28 year old I have white hair on beard it is my problem. Tell me ayurveda have any treatment for white beard hair?</p>
+                </div>
+                <div class="line"></div>
+                <div class="hfDoctorProfile">
+                    <div>
+                        <img src="https://assets.lybrate.com/q_auto:low,f_auto,h_80,w_80,c_fill,g_auto:face/img/documents/doctor/dp/4989775152c8f38c18e8f65e4e6b397f/Ayurveda-AnkitaGupta-Haldwani-17316c.png"
+                            alt="">
+                    </div>
+                    <div class="hfDoctorProfileInfo">
+                        <p>Dr.Ankita Gupta</p>
+                        <p>Bachelor of Ayurveda, Medicine and Surgery (BAMS), MS Ayurveda</p>
+                        <p>Ayurvedic Doctor, Haldwani - 7yrs exp</p>
+                    </div>
+                </div>
+                <div class="hfContentImg">
+                    <img src="https://assets.lybrate.com/q_auto:eco,f_auto,w_850/imgs/tic/improving-hair-health/male/Improving-Hair-Health-male-01.jpg"
+                        alt="">
+                </div>
+                <div class="hfBottomContent">
+                    <p>Hello, yes ayurveda has solution for your problem, you need ramayana treatment for premature graying. Make mixture of
+                    (awla powder+ giloy powder+ gokshura powder) in equal quantity, and take this 2 times in a day with cow ghee and honey
+                    in unequal quantity.
+                    This will help you. For deatail treatment please consult me on Lybrate.</p>
+                </div>
+            </div>
+            <div class="hfFooterButtons">
+                <button><i class="fas fa-pen-square"></i>Submit Feedback</button>
+                <button><i class="fas fa-comments"></i>Consult Online</button>
+                <button><i class="fas fa-calendar-check"></i>Book Appointment</button>
+            </div>
+        </div>
+     </div> 
+    </div>
+    <div id="hfPageFooter">
+        <div>
+            <p><span>Search Health Products</span></p>
+            <p>Goodkart</p>
+            <p>Vitamin and Supplement</p>
+            <p>Protein and Fitness</p>
+            <p>Skin and Hair Care</p>
+            <p>Sexual Wellness</p>
+            <p>Weight Management</p>
+            <p>Food and Drink</p>
+            <p>Personal Care</p>
+            <p>Child Care</p>
+            <p>Good Box</p>
+        </div>
+        <div>
+            <p><span>Search doctors</span></p>
+            <p>Search doctors by city</p>
+            <p>Search doctors by city Locality</p>
+            <p>Search doctors by speciality</p>
+            <p>Search doctors by city speciality</p>
+        </div>
+        <div>
+            <p><span>Read Health Articles</span></p>
+            <p>Health Wiki</p>
+            <p>Health Tips Index</p>
+            <p>Health Questions Index</p>
+            <p>Health Quizzes Index</p>
+            <p>Health Topics Index</p>
+            <p>Medicines Index</p>
+            <p>Ailment Index</p>
+            <p>Lab Test Details Index</p>
+        </div>
+        <div>
+            <p><span>Read about Lybrate</span></p>
+            <p>About Us</p>
+            <p>Contact Us</p>
+            <p>Careers</p>
+            <p>Mobile Apps</p>
+            <p>Blog</p>
+            <p>Terms of use</p>
+            <p>Privacy Policy</p>
+            <p>Editorial Policy</p>
+            <p>Press</p>
+        </div>
+        <div id="hfLastFooterDiv">
+            <p><span>Social</span></p>
+            <div id="hfLastFooterIcons">
+                <div><i class="fab fa-facebook-f"></i></div>
+                <div><i class="fab fa-twitter"></i></div>
+                <div><i class="fab fa-linkedin-in"></i></div>
+                <div><i class="fab fa-youtube"></i></div>
+            </div>
+            <p><span>Download App</span></p>
+            <div><img src="https://assets.lybrate.com/q_auto,f_auto/imgs/product/logos/GooglePlay.png" alt=""></div>
+            <div><img src="https://assets.lybrate.com/q_auto,f_auto/imgs/product/logos/AppStore.png" alt=""></div>
+    </div>
+</body>
+</html>
+
+<script type="text/javascript">
+    let docStatus = localStorage.getItem('LID');
+    let userStatus = localStorage.getItem('LIU');
+    if (userStatus == null) {
+        var isLoggedIn = false;
+        let p = document.createElement('p');
+        p.textContent = "Login/Signup";
+        p.style.cursor = "pointer";
+        p.addEventListener('click', goToSignup);
+        document.getElementById("status").appendChild(p);
+    } else {
+        var isLoggedIn = true;
+        let p = document.createElement('p');
+        p.textContent = "Logout";
+        p.style.cursor = "pointer";
+        p.addEventListener('click', logout);
+        document.getElementById("status").appendChild(p);
+    }
+    let answers = JSON.parse(localStorage.getItem('answers'));
+    for (let i = answers.length - 1; i >= 0; i--) {
+        let doctors = JSON.parse(localStorage.getItem('doctors'));
+        for (let j = 0; j < doctors.length; j++) {
+            if (answers[i].from == doctors[j].email) {
+                let queDiv = document.createElement('div');
+                queDiv.textContent = answers[i].que;
+                queDiv.setAttribute('class', 'queDiv');
+                let docDiv = document.createElement('div');
+                docDiv.setAttribute('class', 'docDiv');
+                let div1 = document.createElement('div');
+                let img = document.createElement('img');
+                img.src = doctors[j].image;
+                div1.append(img);
+                let div2 = document.createElement('div');
+                let p21 = document.createElement('h3');
+                p21.textContent = `Dr. ${doctors[j].name}`;
+                let p22 = document.createElement('p');
+                p22.textContent = doctors[j].edu;
+                let p23 = document.createElement('p');
+                p23.textContent = `${doctors[j].speciality}, ${doctors[j].city} - ${doctors[j].experience}yrs exp`;
+                div2.append(p21, p22, p23);
+                docDiv.append(div1, div2);
+                let ansDiv = document.createElement('div');
+                let p31 = document.createElement('p');
+                p31.textContent = answers[i].ans;
+                ansDiv.append(p31);
+                ansDiv.setAttribute('class', 'ansDiv');
+                let contactDiv = document.createElement('div');
+                contactDiv.setAttribute('class', 'contactDiv');
+                let btn41 = document.createElement('button');
+                btn41.innerHTML = "<i class='fas fa-pen-square'></i>Submit Feedback";
+                btn41.setAttribute('class', 'newInfo');
+                let btn42 = document.createElement('button');
+                btn42.innerHTML = "<i class='fas fa-comments'></i>Consult Online";
+                btn42.onclick = function() {
+                    goToProfile(doctors[j]);
+                }
+                btn42.setAttribute('class', 'newInfo');
+                let btn43 = document.createElement('button');
+                btn43.innerHTML = "<i class='fas fa-calendar-check'></i>Book Appointment";
+                btn43.onclick = function () {
+                    goToClinicAppointment(doctors[j]);
+                }
+                btn43.setAttribute('class', 'newInfo');
+                contactDiv.append(btn41, btn42, btn43);
+                let div = document.createElement('div');
+                div.append(queDiv, docDiv, ansDiv, contactDiv);
+                document.getElementById('newAnswers').append(div);
+            }
+        }
+    }
+    function searchAns() {
+        var keyPresent = false;
+        let key = document.getElementById('searchKey').value;
+        let allAnswers = JSON.parse(localStorage.getItem('answers'));
+        let keySearchResults = [];
+        for(let i = 0; i < allAnswers.length; i++) {
+            for(let j = 0; j <= allAnswers[i].que.length - key.length; j++) {
+                if(key == allAnswers[i].que.slice(j, j + key.length)) {
+                    keyPresent = true;
+                    keySearchResults.push(allAnswers[i]);
+                    break;
+                }
+            }
+        }
+        document.getElementById('newAnswers').innerHTML = null;
+        localStorage.setItem('keySearchResults', JSON.stringify(keySearchResults));
+        let answers = JSON.parse(localStorage.getItem('keySearchResults'));
+        if(!keyPresent) {
+            document.getElementById('newAnswers').textContent = "Your search yielded No Results";
+            document.getElementById('newAnswers').style.margin = "5px";
+            
+            let showDivs = document.querySelectorAll("#newAnswers ~ div");
+            for (let g = 0; g < showDivs.length; g++) {
+                showDivs[g].remove();
+            }
+        }
+        for (let i = answers.length - 1; i >= 0; i--) {
+            let doctors = JSON.parse(localStorage.getItem('doctors'));
+            for (let j = 0; j < doctors.length; j++) {
+                if (answers[i].from == doctors[j].email) {
+                    let queDiv = document.createElement('div');
+                    queDiv.textContent = answers[i].que;
+                    queDiv.setAttribute('class', 'queDiv');
+                    let docDiv = document.createElement('div');
+                    docDiv.setAttribute('class', 'docDiv');
+                    let div1 = document.createElement('div');
+                    let img = document.createElement('img');
+                    img.src = doctors[j].image;
+                    div1.append(img);
+                    let div2 = document.createElement('div');
+                    let p21 = document.createElement('h3');
+                    p21.textContent = `Dr. ${doctors[j].name}`;
+                    let p22 = document.createElement('p');
+                    p22.textContent = doctors[j].edu;
+                    let p23 = document.createElement('p');
+                    p23.textContent = `${doctors[j].speciality}, ${doctors[j].city} - ${doctors[j].experience}yrs exp`;
+                    div2.append(p21, p22, p23);
+                    docDiv.append(div1, div2);
+                    let ansDiv = document.createElement('div');
+                    let p31 = document.createElement('p');
+                    p31.textContent = answers[i].ans;
+                    ansDiv.append(p31);
+                    ansDiv.setAttribute('class', 'ansDiv');
+                    let contactDiv = document.createElement('div');
+                    contactDiv.setAttribute('class', 'contactDiv');
+                    let btn41 = document.createElement('button');
+                    btn41.innerHTML = "<i class='fas fa-pen-square'></i>Submit Feedback";
+                    btn41.setAttribute('class', 'newInfo');
+                    let btn42 = document.createElement('button');
+                    btn42.innerHTML = "<i class='fas fa-comments'></i>Consult Online";
+                    btn42.onclick = function () {
+                        goToProfile(doctors[j]);
+                    }
+                    btn42.setAttribute('class', 'newInfo');
+                    let btn43 = document.createElement('button');
+                    btn43.innerHTML = "<i class='fas fa-calendar-check'></i>Book Appointment";
+                    btn43.onclick = function () {
+                        goToClinicAppointment(doctors[j]);
+                    }
+                    btn43.setAttribute('class', 'newInfo');
+                    contactDiv.append(btn41, btn42, btn43);
+                    let div = document.createElement('div');
+                    div.append(queDiv, docDiv, ansDiv, contactDiv);
+                   
+                    document.getElementById('newAnswers').append(div);
+                    let showDivs = document.querySelectorAll("#newAnswers ~ div");
+                    for(let e = 0; e < showDivs.length; e++) {
+                        showDivs[e].remove();
+                    }
+                }
+            }
+        }
+    }
+    function bookAppointment() {
+        window.location.href = "lybrate_doctors.html";
+    }
+    function consultOnline() {
+        window.location.href="consultOnline.html";
+    }
+    function goToSignup() {
+        window.location.href = "userSignup.html"
+    }
+    function goToHome() {
+        window.location.href = "home2.html";
+    }
+    function goToProfile(a) {
+        localStorage.removeItem('currentDoc');
+        localStorage.setItem('currentDoc', JSON.stringify(a));
+        window.location.href = "onlineProfile.html";
+    }
+    function goToBookLabTest() {
+        window.location.href = "blt.html";
+    }
+    function goToClinicAppointment(a) {
+        localStorage.removeItem('currentDoc');
+        localStorage.setItem('currentDoc', JSON.stringify(a));
+        window.location.href = "clinicAppointment.html";
+    }
+    function logout() {
+        localStorage.removeItem('LIU');
+        localStorage.removeItem('LID');
+        window.location.href = "hf.html";
+    }
+    function goToHealthFeed() {
+        window.location.href = "hf.html";
+    }
+    
+    function goToDoctorSignup() {
+        window.location.href = "doctorSignup.html";
+    }
+    function goToAskQuestions() {
+        window.location.href = "askQuestions.html";
+    }
+    function freshQue(e) {
+        e.preventDefault();
+        let que = document.getElementById("que").value;
+        localStorage.setItem('tabQue', JSON.stringify(que));
+        window.location.href = "askQuestions.html";
+    }
+</script>

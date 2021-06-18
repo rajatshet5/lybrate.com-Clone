@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style type="text/css">
+        * {
+            font-family: "Roboto", sans-serif;
+        }
+        #index {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            height: 50px;
+            background-color: white;
+            margin: 0px;
+        }
+        #index > div {
+            display: flex;
+            cursor: pointer;
+            margin: 0px;
+        }
+        #index > div > p {
+            margin: 15px 19px;
+            font-size: 16px;
+        }
+        #index img {
+            height: 30px;
+            margin: 10px 25px;
+        }
+        #consultationsDiv {
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+        }
+        #consultations {
+            display: flex;
+            flex-direction: column;
+        }
+        #consultations > div {
+            margin-bottom: 23px;
+            border: 1px solid grey;
+            padding: 15px;
+            color: grey;
+        }
+        button {
+            cursor: pointer;
+            width: 30%;
+            height: 43px;
+            background-color: rgba(200,37,6,255);
+            color: white;
+            margin: 15px 10px;
+            border: 1px solid rgba(200,37,6,255);
+        }
+        button:hover {
+            background-color: rgb(126, 24, 3);
+        }
+        #tabs {
+            display: flex;
+            height: 40px;
+            margin: 2px solid black;
+            justify-content:space-around;
+            text-align: center;
+        }
+        #tabs > div {
+            border: 1px solid black;
+            width: 100%;
+            align-items: center;
+            padding-top: 10px;
+            cursor: pointer;
+            background-color: crimson;
+            color: white;
+        }
+        #tabs > div:hover {
+            background-color: rgb(138, 8, 34);
+        }
+        body {
+            margin: 0px;
+            background-color: rgb(226, 224, 224);
+        }
+        @media (max-width:800px) {
+            #consultationsDiv {
+                width: 95%;
+            }
+            #sub p {
+                font-size: 13px !important;
+            }
+            img {
+                width: 80px;
+            }
+        }
+
+        </style>
+    </head>
+    <body>
+        <div id="index">
+            <div onclick="goToHome()">
+                <img src="https://assets.lybrate.com/q_auto,f_auto/code/img/lybrate-logo-new.png" />
+            </div>
+            <div id="sub">
+                <p>Download App</p>
+                <p onclick="goToHealthFeed()">Health Feed</p>
+            </div>
+        </div>
+        <div id="tabs">
+            <div onclick="clinicAppointments()">Clinic Appointments</div>
+            <div onclick="onlineConsultations()">Online Consultations</div>
+        </div>
+        <div id="consultationsDiv">
+            <p id="info"></p>
+            <div id="consultations"></div>
+        </div>
+
+        <script type="text/javascript">
+        let docStatus = localStorage.getItem('LID');        
+        if(docStatus == null) {
+            var isLoggedIn = false;
+            window.location.href = "doctorLogin.html";
+        } else {
+            var isLoggedIn = true;
+            let p = document.createElement('p');
+            p.textContent = "Logout";
+            p.style.cursor = "pointer";
+            p.addEventListener('click', logout);
+            document.getElementById("sub").appendChild(p);
+        }
+        function onlineConsultations() {
+            document.getElementById("info").innerHTML = null;
+            document.getElementById("consultations").innerHTML = null;
+            let reqs = JSON.parse(localStorage.getItem('requests'));
+            let lid = JSON.parse(localStorage.getItem('LID'));
+            let pendingCounsultations = false;
+            for(let i = 0; i < reqs.length; i++) {
+                if(reqs[i].to == lid.email) {
+                    pendingCounsultations = true;
+                    document.getElementById("info").textContent = "You have the following Online Consultations:";
+                    let div = document.createElement('div');
+                    let p1 = document.createElement('p');
+                    p1.textContent = `Name: ${reqs[i].name}`;
+                    let p2 = document.createElement('p');
+                    p2.textContent = `Phone: ${reqs[i].phone}`;
+                    let p3 = document.createElement('p');
+                    p3.textContent = `Mode: ${reqs[i].type} conversation`;
+                    let btn = document.createElement('button');
+                    if(reqs[i].type == "text") {
+                        btn.textContent = "Initiate Text Conversation";
+                    } else if (reqs[i].type == "phone") {
+                        btn.textContent = "Initiate Phone Conversation";
+                    } else {
+                        btn.textContent = "Initiate Video Conversation";
+                    }
+                    let btnCompleted = document.createElement('button');
+                    btnCompleted.textContent = "Mark Completed";
+                    btnCompleted.onclick = function () {
+                        reqs.splice(i, 1);
+                        localStorage.setItem('requests', JSON.stringify(reqs));
+                        onlineConsultations();
+                    }
+                    let btnDiv = document.createElement('div');
+                    btnDiv.append(btn, btnCompleted);
+                    btnDiv.style.display = "flex";
+                    div.append(p1, p2, p3, btnDiv);
+                    div.style.backgroundColor = "white";
+                    div.style.margin = "15px 45px";
+                    document.getElementById("consultations").append(div);
+                }
+            }
+            if(!pendingCounsultations) {
+                document.getElementById("info").textContent = "You do not have any Online Consultations."
+            }
+        }
+
+        function clinicAppointments() {
+            document.getElementById("info").innerHTML = null;
+            document.getElementById("consultations").innerHTML = null;
+            let ca = JSON.parse(localStorage.getItem('clinicAppointment'));
+            ca = ca.sort(function (a, b) {
+                return a.val - b.val;
+            });
+            let lid = JSON.parse(localStorage.getItem('LID'));
+            let pendingAppointments = false;
+            for(let i = 0; i < ca.length; i++) {
+                if(ca[i].to == lid.email) {
+                    pendingAppointments = true;
+                    document.getElementById("info").textContent = "You have the following appointments:";
+                    let div = document.createElement('div');
+                    let p1 = document.createElement('p');
+                    p1.textContent = `Name: ${ca[i].from}`;
+                    let p2 = document.createElement('p');
+                    p2.textContent = `Phone: ${ca[i].phone}`;
+                    let p3 = document.createElement('p');
+                    p3.textContent = `Date: ${ca[i].date} at ${ca[i].time}${ca[i].phase}`;
+                    let btn = document.createElement('button');
+                    btn.textContent = "Mark Completed";
+                    btn.onclick = function() {
+                        ca.splice(i, 1);
+                        localStorage.setItem('clinicAppointment', JSON.stringify(ca));
+                        clinicAppointments();
+                    }
+                    div.append(p1, p2, p3, btn);
+                    div.style.backgroundColor = "white";
+                    div.style.margin = " 15px 45px";
+                    document.getElementById("consultations").append(div);
+                }
+            }
+            if (!pendingAppointments) {
+                document.getElementById("info").textContent = "You do not have any Appointments."
+            }
+        }
+        clinicAppointments();
+        function goToHome() {
+            window.location.href = "LID_Profile.html";
+        }
+        function logout() {
+            localStorage.removeItem('LIU');
+            localStorage.removeItem('LID');
+            window.location.href = "doctorLogin.html";
+        }
+        function goToHealthFeed() {
+            window.location.href = "newQuestions.html";
+        }
+        </script>
+    </body>
+</html>

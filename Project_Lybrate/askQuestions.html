@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style type="text/css">
+        * {
+            font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+        #index {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            height: 50px;
+            background-color: white;
+            margin: 0px;
+        }
+        #index > div {
+            display: flex;
+            cursor: pointer;
+            margin: 0px;
+        }
+        #index > div > p {
+            margin: 15px 25px;
+            font-size: 17px;
+        }
+        #askQueDiv {
+            background-image: url("https://assets.lybrate.com/q_auto,f_auto/imgs/product/www/Banner_Ask_Question_default.jpg");
+            width: 100%;
+            height: 670px;
+            padding-top: 15px;
+            background-size:cover;
+            margin: 0px;
+        }
+        #queDiv {
+            width: 46%;
+            height: 500px;
+            padding: 15px;
+            background-color: white;
+            margin: 0px;
+            margin-left: 70px;
+            border-radius: 5px;
+        }
+        #queDiv > #que {
+            height: 270px;
+            width: 80%;
+            padding: 5px;
+        }
+        #askQueDiv button {
+            width: 90%;
+            height: 50px;
+            font-size: 19px;
+            font-weight: 600;
+            background-color: rgba(200,37,6,255);
+            cursor: pointer;
+            border: 1px solid rgba(200,37,6,255);
+            border-radius: 5px;
+            color: white;
+            margin: 10px;
+            margin-bottom: 0px;
+        }
+        #askQueDiv button:hover {
+            background-color: rgb(153, 33, 8);
+        }
+        #assurance {
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+            height: 260px;
+            width: 80%;
+            margin: 10px auto;
+            background-color: white;
+            border-radius: 5px;
+        }
+        #assurance > div {
+            text-align: center;
+            margin-top: 0px;
+            padding-top: 15px;
+        }
+        #assurance > div {
+            display: flex;
+            justify-content:space-between;
+            border-top: 1px solid rgb(221, 218, 218);
+        }
+        #assurance > div > div {
+            display: flex;
+            flex-direction: column;
+            padding: 1%;
+            justify-content: center;
+            margin-top: 0px;
+        }
+        #assurance img {
+            width: 40px;
+            margin: auto;
+        }
+        body {
+            margin: 0px;
+            background-color: rgba(238,238,238,255);
+        }
+        #data {
+            width: 100%;
+            background-color: rgba(68,68,68,255);
+            height: 150px;
+            display: flex;
+            justify-content: space-around;
+            color: white;
+            align-items: center;
+            text-align: center;
+        }
+        h1 {
+            margin: 0px 70px 15px;
+            width: 50%;
+            text-align: center;
+        }
+        #anonEmail, #anonPhone {
+            width: 40%;
+            height: 30px;
+            margin-bottom: 15px;
+        }
+        #queDiv p {
+            text-align: center;
+        }
+        #index img {
+            height: 28px;
+            margin: 12px 38px;
+        }
+        textarea {
+            width: 80%;
+        }
+        @media (max-width: 800px) {
+            #askQueDiv {
+            background-image: url("https://assets.lybrate.com/q_auto,f_auto/imgs/product/www/Banner_Ask_Question_default.jpg");
+            width: 100%;
+            height: 800px;
+            display: flex;
+            flex-direction: column;
+            padding-top: 15px;
+            background-size:cover;
+            margin: 0px;
+        }
+        textarea {
+            width: 80%;
+        }
+        #index {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            background-color: white;
+            margin: 0px;
+        }
+        #index > div {
+            display: flex;
+            cursor: pointer;
+            margin: 0px;
+        }
+        #index > div > p {
+            margin: 10px;
+            font-size: 14px;
+        }
+        h1 {
+            font-size: 15px;
+            margin: 5px auto;
+        }
+        #queDiv {
+            width: 80%;
+            height: 600px;
+            padding: 15px;
+            background-color: white;
+            margin: 0px;
+            margin-left: 30px;
+            border-radius: 5px;
+        }
+        #assurance {
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+            height: 300px;
+            width: 80%;
+            margin: 5px auto;
+            background-color: white;
+            border-radius: 5px;
+        }
+        #data {
+            flex-direction: column;
+            height: 400px;
+        }
+
+        }
+        </style>
+    </head>
+    <body>
+        <div id="index">
+            <div onclick="goToHome()">
+                <img src="https://assets.lybrate.com/q_auto,f_auto/code/img/lybrate-logo-new.png"/>
+            </div>
+            <div id="dets">
+                <p>Download App</p>
+                <p id="lgisu" onclick="goToUserLogin()">Login/Sign-up</p>
+                <p onclick="goToDoctorLogin()">For Doctors</p>
+            </div>
+        </div>
+        <div id="askQueDiv">
+            <h1>Get brief answers for your health queries from top Doctors. It's FREE!</h1>
+            <div id="queDiv">
+                <form id="queForm">
+                    <h3>What is your question?</h3>
+                    <textarea id="question" name="question" cols="70" rows="10" placeholder="Type in your question"></textarea>
+                    <h3>I'm just looking for</h3>
+                    <input type="radio" id="ji" name="info" value="ji">
+                    <label for="ji">Just Information</label>
+                    <input type="radio" id="td" name="info" value="td">
+                    <label for="td">Treatment Details</label>
+                    <h3>Where should we send secure notifications?</h3>
+                    <input type="email" id="anonEmail" placeholder="Your email address" />
+                    <input type="number" id="anonPhone" placeholder="Your mobile number" />
+                </form>
+                <button onclick="freshQue()">Ask FREE Question Securely</button>
+                <p>Complete privacy and anonymity guaranteed • Quick responses</p>
+            </div>
+        </div>
+        <div id="assurance">
+            <p id="ap" class="subHeading">LYBRATE ASSURANCE</p>
+            <div>
+                <div>
+                    <img src="https://nu.lybcdn.com/img/askQ/ic-ly-doctor.png" />Verified Doctors
+                    <p>All Doctors go through a stringent verification process on Lybrate</p>
+                </div>
+                <div>
+                    <img src="https://nu.lybcdn.com/img/askQ/ic-ly-privacy.png" />100% Privacy Protection
+                    <p>Your consultation details and personal data will remain confidential</p>
+                </div>
+                <div>
+                    <img src="https://nu.lybcdn.com/img/askQ/ic-ly-quick.png" />Satisfaction Guaranteed
+                    <p>If you are not satisfied with your experience, we will refund your money</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="data">
+            <div>
+                <p>Currently Seeking Help</p>
+                <h2>3,000+</h2>
+            </div>
+            <div>
+                <p>People Helped</p>
+                <h2>80,00,000+</h2>
+            </div>
+            <div>
+                <p>Available Doctors</p>
+                <h2>100,000+</h2>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+        let docStatus = localStorage.getItem('LID');
+        let userStatus = localStorage.getItem('LIU');
+        if(userStatus != null) {
+            var isLoggedIn = true;
+            document.getElementById("lgisu").remove();
+            let p = document.createElement('p');
+            p.textContent = "Logout";
+            p.style.cursor = "pointer";
+            p.addEventListener('click', logout);
+            document.getElementById("dets").appendChild(p);
+        }
+        let tabQue = localStorage.getItem('tabQue');
+        if(tabQue != null) {
+            let preVal = JSON.parse(tabQue);
+            document.getElementById('question').value = preVal;
+        }
+        function goToHome() {
+            window.location.href = "home2.html";
+        }
+        function logout() {
+            localStorage.removeItem('LIU');
+            localStorage.removeItem('LID');
+            window.location.href = "askQuestions.html";
+        }
+        function goToUserLogin() {
+            window.location.href = "userLogin.html";
+        }
+        function goToDoctorLogin() {
+            window.location.href = "doctorLogin.html";
+        }
+        function freshQue() {
+            let form = document.getElementById("queForm");
+            let que = form.question.value;
+            let info = form.info.value;
+            let email = form.anonEmail.value;
+            let phone = form.anonPhone.value;
+            if(email == "" || phone == "" || que == "" || info == "") {
+                alert('Please fill in all the details.');
+            } else {
+                let newQuestion = {
+                    que,
+                    info,
+                    email,
+                    phone,
+                }
+                let newQuestions = localStorage.getItem('newQuestions');
+                if (newQuestions == null) {
+                    newQuestions = [];
+                } else {
+                    newQuestions = JSON.parse(newQuestions);
+                }
+                newQuestions.push(newQuestion);
+                localStorage.setItem('newQuestions', JSON.stringify(newQuestions));
+                alert('Question Submitted.');
+            }
+        }
+        </script>
+    </body>
+</html>
