@@ -1,7 +1,7 @@
 # lybrate.com-Clone
 
 
-This is a clone of Lybrate.com.
+This is a clone of lybrate.com.
 Lybrate is a health-tech company that provides an online platform to connect doctors and patients.
 We have implemented this using HTML, CSS and JavaScript.
 
