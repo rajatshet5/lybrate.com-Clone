@@ -66,11 +66,14 @@
             align-items: center;
             padding-top: 10px;
             cursor: pointer;
-            background-color: crimson;
-            color: white;
+            background-color: white;
+            color: rgba(200,37,6,255);
+            border: 1px solid rgba(200,37,6,255);
+            font-weight: 650;
         }
         #tabs > div:hover {
-            background-color: rgb(138, 8, 34);
+            background-color: rgba(200,37,6,255);
+            color: white;
         }
         body {
             margin: 0px;
@@ -101,8 +104,8 @@
             </div>
         </div>
         <div id="tabs">
-            <div onclick="clinicAppointments()">Clinic Appointments</div>
-            <div onclick="onlineConsultations()">Online Consultations</div>
+            <div onclick="clinicAppointments()" id="cA">Clinic Appointments</div>
+            <div onclick="onlineConsultations()" id="oC">Online Consultations</div>
         </div>
         <div id="consultationsDiv">
             <p id="info"></p>
@@ -123,6 +126,10 @@
             document.getElementById("sub").appendChild(p);
         }
         function onlineConsultations() {
+            document.getElementById("oC").style.backgroundColor = "rgba(200,37,6,255)";
+            document.getElementById("oC").style.color = "white";
+            document.getElementById("cA").style.backgroundColor = "white";
+            document.getElementById("cA").style.color = "rgba(200,37,6,255)";
             document.getElementById("info").innerHTML = null;
             document.getElementById("consultations").innerHTML = null;
             let reqs = JSON.parse(localStorage.getItem('requests'));
@@ -169,6 +176,10 @@
         }
 
         function clinicAppointments() {
+            document.getElementById("cA").style.backgroundColor = "rgba(200,37,6,255)";
+            document.getElementById("cA").style.color = "white";
+            document.getElementById("oC").style.backgroundColor = "white";
+            document.getElementById("oC").style.color = "rgba(200,37,6,255)";
             document.getElementById("info").innerHTML = null;
             document.getElementById("consultations").innerHTML = null;
             let ca = JSON.parse(localStorage.getItem('clinicAppointment'));
