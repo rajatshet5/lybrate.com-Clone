@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="hf.css">
+        <style type="text/css">
+        * {
+            font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+        #newAnswers {
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        margin: 15px auto;
+    }
+    #newAnswers > div {
+        padding: 10px;
+        border-radius: 4px;
+        padding: 0px 8px 10px;
+        margin: 15px 0px 15px;
+    }
+    .docDiv, .contactDiv {
+        display: flex;
+    }
+    .docDiv {
+        height: 90px;
+        margin-bottom: 0px;
+        background-color: white;
+        padding: 15px 14px 0px;
+        border-bottom: 1px solid rgb(226, 226, 226);
+    }
+    .docDiv img {
+        height: 80%;
+        margin: 3px 23px 3px 10px;
+        border-radius: 50px;
+    }
+    .docDiv h3, .docDiv p {
+        margin: 1px;
+    }
+    .docDiv h3 {
+        font-size: 18px;
+        font-weight: 650;
+        color: rgb(173, 33, 5);
+    }
+    .docDiv p {
+        font-size: 14px;
+        color: grey;
+    }
+    .queDiv {
+        font-weight: 700;
+        margin: 5px 0px 15px;
+        font-size: 18px;
+        display: flex;
+        margin-bottom: 15px;
+        background-color: white;
+        padding: 21px;
+    }
+    .ansDiv {
+        height: 51%;
+        display: flex;
+        flex-wrap: wrap;
+        font-size: 16px;
+        background-color: white;
+        padding: 15px;
+        line-height: 21px;
+    }
+    .ansDiv p {
+        width: 100%;
+    }
+    .contactDiv {
+        height: 70px;
+        padding: 15px;
+        background-color: white;
+    }
+    .contactDiv i {
+        color: rgba(200,37,6,255);
+    }
+    .contactDiv i:hover {
+        color: white;
+    }
+    .contactDiv button {
+        flex-grow: 1;
+        background-color: white;
+        border: 1px solid rgba(200,37,6,255);
+        border-radius: 3px;
+        font-weight: 670;
+        cursor: pointer;
+        color: rgba(200,37,6,255);
+    }
+    .contactDiv button:hover {
+        background-color: rgba(200,37,6,255);
+        color: white;
+    }
+        #lyb {
+        width: 100%;
+        height: 60px;
+        margin-bottom: 40px;
+        padding: 15px;
+        background-color: white;
+        display: flex;
+    }
+    #lyb > div {
+        width: 17%;
+        display: flex;
+        cursor: pointer;
+        align-items: center;
+    }
+    #lyb > img {
+        cursor: pointer;
+        margin-right: 300px;
+    }
+    #status {
+        height: 30px;
+        display: flex;
+        justify-content:flex-end;
+        align-items: center;
+        background-color: rgba(235,238,243,255);
+        margin:0px;
+    }
+    #status > p {
+        margin-left: 21px;
+        cursor: pointer;
+        font-size: 13px;
+    }
+        
+
+        </style>
+    </head>
+    <body>
+        <script src="https://kit.fontawesome.com/afe9d36b7f.js" crossorigin="anonymous"></script>
+        <div id="status">
+            <p>Get the App</p>
+            <p onclick="goToDoctorSignup()">For Doctors</p>
+            <p onclick="goToHealthFeed()">Health Feed</p>
+        </div>
+        <div id="lyb">
+            <img onclick="goToHome()" src="https://doctor.lybrate.com/img/lybrate-logo.png" />
+            <div onclick="goToAskQuestions()">
+                <img src="https://assets.lybrate.com/q_auto,f_auto,h_28,w_28,c_fill/imgs/product/Homepage/Ask-Question.png" />
+                <p>Ask a Question</p>
+            </div>
+            <div onclick="bookAppointment()">
+                <img
+                    src="https://assets.lybrate.com/q_auto,f_auto,h_28,w_28,c_fill/imgs/product/Homepage/Book-Appointment.png" />
+                <p>Book Appointment</p>
+            </div>
+            <div onclick="consultOnline()">
+                <img src="https://assets.lybrate.com/q_auto,f_auto,h_28,w_28,c_fill/imgs/product/Homepage/Consult-Online.png" />
+                <p>Consult Online</p>
+            </div>
+            <div>
+                <img onclick="goToBookLabTest()"
+                    src="https://assets.lybrate.com/q_auto,f_auto,h_28,w_28,c_fill/imgs/product/Homepage/Book-Lab-test.png" />
+                <p onclick="goToBookLabTest()">Book Lab Test</p>
+            </div>
+        </div>
+
+
+        <div id="hfAllBoxes">
+            <div id="ask-questionBoxAndImg">
+                <div id="ask-questionBox">
+                    <form>
+                        <div card header class="ask-question-header">
+                            <i class="far fa-comment-alt"></i>
+                            <div>Ask a Question</div>
+                            <div>Get FREE multiple opinions from Doctors</div>
+                        </div>
+                        <div card content class="ask-question-input">
+                            <textarea id="que" type="text" name="message" style="text-align:left;"
+                                placeholder="Enter question for you or someone else. E.g. my left eye is red and swollen"
+                                required></textarea>
+                        </div>
+                        <div card footer class="ask-question-footer">
+                            <span>Posted Anonymously</span>
+                            <button onclick="freshQue(event)" type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+                <div id="covidCarePlan">
+                    <img src="https://assets.lybrate.com/q_auto,f_auto/rio/800x800/Lybrate_Covid-Care_Banner_320x235_18-05-2021.jpg"
+                        alt="">
+                </div>
+            </div>
+            <div id="hfFlexBox">
+                <div id="hfLybrateGold">
+                    <div>
+                        <img src="https://assets.lybrate.com/swan/patmem/LybrateGold_Color.png" alt="">
+                    </div>
+                    <div>
+                        <h4>Lybrate gold</h4>
+                        <p>Become a member today and enjoy limitless health privileges, Good health made easy!</p>
+                    </div>
+                    <div><i class="fas fa-chevron-right"></i></div>
+                </div>
+                <div id="newAnswers">
+        
+                </div>
+            </div>
+        </div>
+        <div id="hfPageFooter">
+            <div>
+                <p><span>Search Health Products</span></p>
+                <p>Goodkart</p>
+                <p>Vitamin and Supplement</p>
+                <p>Protein and Fitness</p>
+                <p>Skin and Hair Care</p>
+                <p>Sexual Wellness</p>
+                <p>Weight Management</p>
+                <p>Food and Drink</p>
+                <p>Personal Care</p>
+                <p>Child Care</p>
+                <p>Good Box</p>
+            </div>
+            <div>
+                <p><span>Search doctors</span></p>
+                <p>Search doctors by city</p>
+                <p>Search doctors by city Locality</p>
+                <p>Search doctors by speciality</p>
+                <p>Search doctors by city speciality</p>
+            </div>
+            <div>
+                <p><span>Read Health Articles</span></p>
+                <p>Health Wiki</p>
+                <p>Health Tips Index</p>
+                <p>Health Questions Index</p>
+                <p>Health Quizzes Index</p>
+                <p>Health Topics Index</p>
+                <p>Medicines Index</p>
+                <p>Ailment Index</p>
+                <p>Lab Test Details Index</p>
+            </div>
+            <div>
+                <p><span>Read about Lybrate</span></p>
+                <p>About Us</p>
+                <p>Contact Us</p>
+                <p>Careers</p>
+                <p>Mobile Apps</p>
+                <p>Blog</p>
+                <p>Terms of use</p>
+                <p>Privacy Policy</p>
+                <p>Editorial Policy</p>
+                <p>Press</p>
+            </div>
+            <div id="hfLastFooterDiv">
+                <p><span>Social</span></p>
+                <div id="hfLastFooterIcons">
+                    <div><i class="fab fa-facebook-f"></i></div>
+                    <div><i class="fab fa-twitter"></i></div>
+                    <div><i class="fab fa-linkedin-in"></i></div>
+                    <div><i class="fab fa-youtube"></i></div>
+                </div>
+                <p><span>Download App</span></p>
+                <div><img src="https://assets.lybrate.com/q_auto,f_auto/imgs/product/logos/GooglePlay.png" alt=""></div>
+                <div><img src="https://assets.lybrate.com/q_auto,f_auto/imgs/product/logos/AppStore.png" alt=""></div>
+            </div>
+        </div>
+
+
+
+
+
+        <script type="text/javascript">
+        let docStatus = localStorage.getItem('LID');
+            let userStatus = localStorage.getItem('LIU');
+            if (userStatus == null) {
+                var isLoggedIn = false;
+                let p = document.createElement('p');
+                p.textContent = "Login/Signup";
+                p.style.cursor = "pointer";
+                p.addEventListener('click', goToSignup);
+                document.getElementById("status").appendChild(p);
+            } else {
+                var isLoggedIn = true;
+                let p = document.createElement('p');
+                p.textContent = "Logout";
+                p.style.cursor = "pointer";
+                p.addEventListener('click', logout);
+                document.getElementById("status").appendChild(p);
+            }
+                let longAnswer = JSON.parse(localStorage.getItem('longAns'));
+                let doctors = JSON.parse(localStorage.getItem('doctors'));
+                for (let j = 0; j < doctors.length; j++) {
+                    if (longAnswer.from == doctors[j].email) {
+                        let queDiv = document.createElement('div');
+                        queDiv.textContent = longAnswer.que;
+                        queDiv.setAttribute('class', 'queDiv');
+                        let docDiv = document.createElement('div');
+                        docDiv.setAttribute('class', 'docDiv');
+                        let div1 = document.createElement('div');
+                        let img = document.createElement('img');
+                        img.src = doctors[j].image;
+                        div1.append(img);
+                        let div2 = document.createElement('div');
+                        let p21 = document.createElement('h3');
+                        p21.textContent = `Dr. ${doctors[j].name}`;
+                        let p22 = document.createElement('p');
+                        p22.textContent = doctors[j].edu;
+                        let p23 = document.createElement('p');
+                        p23.textContent = `${doctors[j].speciality}, ${doctors[j].city} - ${doctors[j].experience}yrs exp`;
+                        div2.append(p21, p22, p23);
+                        docDiv.append(div1, div2);
+                        let ansDiv = document.createElement('div');
+                        let p31 = document.createElement('p');
+                        p31.textContent = longAnswer.ans;
+                        ansDiv.append(p31);
+                        ansDiv.setAttribute('class', 'ansDiv');
+                        let contactDiv = document.createElement('div');
+                        contactDiv.setAttribute('class', 'contactDiv');
+                        let btn41 = document.createElement('button');
+                        btn41.innerHTML = "Submit Feedback";
+                        btn41.setAttribute('class', 'newInfo');
+                        let btn42 = document.createElement('button');
+                        btn42.innerHTML = "Consult Online";
+                        btn42.onclick = function () {
+                            goToProfile(doctors[j]);
+                        }
+                        btn42.setAttribute('class', 'newInfo');
+                        let btn43 = document.createElement('button');
+                        btn43.innerHTML = "Book Appointment";
+                        btn43.onclick = function () {
+                            goToClinicAppointment(doctors[j]);
+                        }
+                        btn43.setAttribute('class', 'newInfo');
+                        contactDiv.append(btn41, btn42, btn43);
+                        let div = document.createElement('div');
+                        div.append(queDiv, docDiv, ansDiv, contactDiv);
+                        document.getElementById('newAnswers').append(div);
+                    }
+                }
+
+
+                    function bookAppointment() {
+                        window.location.href = "lybrate_doctors.html";
+                    }
+                    function consultOnline() {
+                        window.location.href = "consultOnline.html";
+                    }
+                    function goToSignup() {
+                        window.location.href = "userSignup.html"
+                    }
+                    function goToHome() {
+                        window.location.href = "home2.html";
+                    }
+                    function goToProfile(a) {
+                        localStorage.removeItem('currentDoc');
+                        localStorage.setItem('currentDoc', JSON.stringify(a));
+                        window.location.href = "onlineProfile.html";
+                    }
+                    function goToBookLabTest() {
+                        window.location.href = "blt.html";
+                    }
+                    function goToClinicAppointment(a) {
+                        localStorage.removeItem('currentDoc');
+                        localStorage.setItem('currentDoc', JSON.stringify(a));
+                        window.location.href = "clinicAppointment.html";
+                    }
+                    function logout() {
+                        localStorage.removeItem('LIU');
+                        localStorage.removeItem('LID');
+                        window.location.href = "hf.html";
+                    }
+                    function goToHealthFeed() {
+                        window.location.href = "hf.html";
+                    }
+
+                    function goToDoctorSignup() {
+                        window.location.href = "doctorSignup.html";
+                    }
+                    function goToAskQuestions() {
+                        window.location.href = "askQuestions.html";
+                    }
+                    function freshQue(e) {
+                        e.preventDefault();
+                        let que = document.getElementById("que").value;
+                        localStorage.setItem('tabQue', JSON.stringify(que));
+                        window.location.href = "askQuestions.html";
+                    }
+
+        </script>
+
+
+
+
+
+
+    </body>
+</html>
