@@ -121,6 +121,11 @@
         cursor: pointer;
         font-size: 13px;
     }
+    .infoDiv {
+        color: rgb(156, 154, 154);
+        font-size: 13px;
+        margin: 0px !important;
+    }
         
 
         </style>
@@ -326,6 +331,12 @@
                         document.getElementById('newAnswers').append(div);
                     }
                 }
+                let infoDiv = document.createElement('div');
+                let p_info = document.createElement('p');
+                p_info.textContent = "Suggestions offered by doctors on Lybrate are of advisory nature i.e., for educational and informational purposes only. Content posted on, created for, or compiled by Lybrate is not intended or designed to replace your doctor's independent judgment about any symptom, condition, or the appropriateness or risks of a procedure or treatment for a given person.";
+                infoDiv.append(p_info);
+                infoDiv.setAttribute('class', 'infoDiv');
+                document.getElementById("newAnswers").append(infoDiv);
 
 
                     function bookAppointment() {
