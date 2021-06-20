@@ -27,8 +27,7 @@ body {
   margin: 5px 10px;
   width: 120px;
 }
-#header > div:nth-child(2) {
-}
+
 #header > #rightButton {
   display: flex;
   flex-direction: row;

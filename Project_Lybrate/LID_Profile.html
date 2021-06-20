@@ -36,10 +36,16 @@
             flex-direction: column;
         }
         #consultations > div {
-            margin-bottom: 23px;
+            margin-bottom: 25px;
             border: 1px solid grey;
             padding: 15px;
-            color: grey;
+            color: rgb(48, 47, 47);
+            box-shadow: 0 0 17px rgba(33,33,33,.2); 
+        }
+        #consultations > div > p {
+            font-size: 15px;
+            margin-bottom: 8px;
+            font-weight: 550;
         }
         button {
             cursor: pointer;
@@ -78,6 +84,9 @@
         body {
             margin: 0px;
             background-color: rgb(226, 224, 224);
+        }
+        #info {
+            margin: 15px 40px;
         }
         @media (max-width:800px) {
             #consultationsDiv {
@@ -145,7 +154,13 @@
                     let p2 = document.createElement('p');
                     p2.textContent = `Phone: ${reqs[i].phone}`;
                     let p3 = document.createElement('p');
-                    p3.textContent = `Mode: ${reqs[i].type} conversation`;
+                    if (reqs[i].type == "text") {
+                        p3.textContent = "Medium: Text Conversation";
+                    } else if (reqs[i].type == "phone") {
+                        p3.textContent = "Medium: Phone Conversation";
+                    } else {
+                        p3.textContent = "Medium: Video Conversation";
+                    }
                     let btn = document.createElement('button');
                     if(reqs[i].type == "text") {
                         btn.textContent = "Initiate Text Conversation";
