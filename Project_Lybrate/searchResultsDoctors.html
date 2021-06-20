@@ -228,7 +228,7 @@
         <script src="https://kit.fontawesome.com/afe9d36b7f.js" crossorigin="anonymous"></script>
         <div id="status">
             <p>Get the App</p>
-            <p onclick="goToDoctorSignup()">For Doctors</p>
+            <p onclick="goToDoctorPage()">For Doctors</p>
             <p onclick="goToHealthFeed()">Health Feed</p>
         </div>
         <div id="lyb">
@@ -427,6 +427,9 @@
         }
         function consultOnline() {
             window.location.href="consultOnline.html";
+        }
+        function goToDoctorPage() {
+            window.location.href = "doctorPage.html";
         }
         function goToSignup() {
             window.location.href = "userSignup.html"

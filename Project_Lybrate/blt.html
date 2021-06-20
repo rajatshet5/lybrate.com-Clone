@@ -653,7 +653,7 @@
 <body>
     <div id="status">
         <p>Get the App</p>
-        <p onclick="goToDoctorSignup()">For Doctors</p>
+        <p onclick="goToDoctorPage()">For Doctors</p>
         <p onclick="goToHealthFeed()">Health Feed</p>
     </div>
     <div id="lyb">
@@ -1093,6 +1093,9 @@
                         localStorage.removeItem('LIU');
                         localStorage.removeItem('LID');
                         window.location.href = "blt.html";
+                    }
+                    function goToDoctorPage() {
+                        window.location.href = "doctorPage.html";
                     }
                     function goToHome() {
                             window.location.href = "home2.html";

@@ -216,7 +216,7 @@
         <script src="https://kit.fontawesome.com/afe9d36b7f.js" crossorigin="anonymous"></script>
         <div id="status">
             <p>Get the App</p>
-            <p onclick="goToDoctorLogin()">For Doctors</p>
+            <p onclick="goToDoctorPage()">For Doctors</p>
             <p onclick="goToHealthFeed()">Health Feed</p>
         </div>
         <div id="lyb">
@@ -615,6 +615,9 @@
         }
         function goToHealthFeed() {
             window.location.href = "hf.html";
+        }
+        function goToDoctorPage() {
+            window.location.href = "doctorPage.html";
         }
         function goToAskQuestions() {
             localStorage.removeItem('tabQue');

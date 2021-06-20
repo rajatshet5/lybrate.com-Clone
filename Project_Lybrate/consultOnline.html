@@ -326,7 +326,7 @@
                 <p>Download App</p>
                 <p onclick="goToUserLogin()">Login</p>
                 <p id="p_login" onclick="goToUserSignup()">Signup</p>
-                <p id="p_signup" onclick="goToDoctorLogin()">For Doctors</p>
+                <p id="p_signup" onclick="goToDoctorPage()">For Doctors</p>
                 <p onclick="goToHealthFeed()">Health Feed</p>
             </div>
         </div>
@@ -547,6 +547,9 @@
         }
         function goToUserLogin() {
             window.location.href = "userLogin.html";
+        }
+        function goToDoctorPage() {
+            window.location.href = "doctorPage.html";
         }
         function goToUserSignup() {
             window.location.href = "userSignup.html";

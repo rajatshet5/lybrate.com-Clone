@@ -194,7 +194,7 @@
             <div id="dets">
                 <p>Download App</p>
                 <p id="lgisu" onclick="goToUserLogin()">Login/Sign-up</p>
-                <p onclick="goToDoctorLogin()">For Doctors</p>
+                <p onclick="goToDoctorPage()">For Doctors</p>
             </div>
         </div>
         <div id="askQueDiv">
@@ -273,6 +273,9 @@
             localStorage.removeItem('LIU');
             localStorage.removeItem('LID');
             window.location.href = "askQuestions.html";
+        }
+        function goToDoctorPage() {
+            window.location.href = "doctorPage.html";
         }
         function goToUserLogin() {
             window.location.href = "userLogin.html";
