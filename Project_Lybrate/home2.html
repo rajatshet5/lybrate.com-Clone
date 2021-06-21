@@ -7,6 +7,42 @@
     <title>Home</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="home2.css">
+    <style type="text/css">
+    #contTwo a {
+        cursor: pointer;
+    }
+    #lybLogo {
+        width: 115px;
+        height: 35px;
+    }
+    @media (max-width: 700px) {
+        #lybLogo {
+            width: 115px !important;
+            height: 35px !important;
+        }
+        .items {
+            font-size: 14px !important;
+            width: 15% !important;
+        }
+        .homeContDivOne {
+            flex-direction: column !important;
+        }
+        .homeContDivOne > a {
+            width: 85% !important;
+            margin: 5px 15px;
+        }
+        #gkButton {
+            max-width: 100px;
+        }
+    }
+    @media (min-width: 700px) {
+            #lybLogo {
+                cursor: pointer;
+                width: 115px !important;
+                height: 35px !important;
+            }
+    }
+    </style>
 </head>
 <body>
     <script src="https://kit.fontawesome.com/afe9d36b7f.js" crossorigin="anonymous"></script>
@@ -20,8 +56,8 @@
         </div>
         <div id="homeContTop">
             <div class="homeContDivOne">
-                <a href="#">
-                    <img src="https://assets.lybrate.com/q_auto,f_auto//imgs/product/logos/Lybrate-Logo.png" alt="Lybrate">
+                <a>
+                    <img id="lybLogo" src="https://assets.lybrate.com/q_auto,f_auto//imgs/product/logos/Lybrate-Logo.png" alt="Lybrate">
                 </a>
                 
                 <a class="items" target="_self" ga-event="Ask_A_Free_Question">
@@ -106,7 +142,7 @@
                 </a>
                 <a href="#" class="item2" target="_self" ga-event="Good_Kart">
                     <div class="goodKart">
-                        <button>Lybrate <br> <span>Goodkart</span></button>
+                        <button id="gkButton">Lybrate <br> <span>Goodkart</span></button>
                     </div>
     
                 </a>
@@ -126,13 +162,13 @@
     
             <!-- 2nd box flex -->
             <div id="contTwo">
-                <a href="#"> Home</a>
-                <a href="#" onclick="goToHealthFeed()">Health Feed</a>
-                <a href="#"> Goodkart</a>
-                <a href="#" onclick="goToAskQuestions()"> Ask a Question</a>
-                <a href="#" onclick="goToConsultOnline()">Consult Online</a>
-                <a href="#" onclick="goToBookLabTest()"> Book Lab Test</a>
-                <a href="#" >Gold Membership</a>
+                <a> Home</a>
+                <a onclick="goToHealthFeed()">Health Feed</a>
+                <a> Goodkart</a>
+                <a onclick="goToAskQuestions()"> Ask a Question</a>
+                <a onclick="goToConsultOnline()">Consult Online</a>
+                <a onclick="goToBookLabTest()"> Book Lab Test</a>
+                <a onclick="goToGoldMembership()">Gold Membership</a>
     
             </div>
             <div id="contThree">
@@ -1088,6 +1124,9 @@
         }
         function goToBookAppointment() {
             window.location.href = "lybrate_doctors.html";
+        }
+        function goToGoldMembership() {
+            window.location.href = "goldMembership.html";
         }
         function goToBookLabTest() {
             window.location.href = "blt.html";
