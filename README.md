@@ -16,3 +16,14 @@ The project has the following functionalities:
 5) Ask Questions Page: Anonymous users can ask questions to Doctors and Doctors answer the questions. After a Doctor answers a question, the question and the answer, along with the Doctor details will get added to the health feed page.
 5) Search feature to search for Doctors by their name / specialty / city.
 6) Search feature to search for keywords in the questions that have been asked in the health feed page.
+
+Instructions to Run the Project: 
+
+1) Clone the Project in any folder by using the following command in the terminal:
+
+ git clone https://github.com/rajatshet5/lybrate.com-Clone.git
+
+2) Open any HTML file in the Project in any browser.
+3) Sign up as a new User or a new Doctor by entering your details. 
+4) Login as a User or a Doctor and any of the above mentioned features can be performed.
+(Without Signing up / Logging in, a user can make a clinic booking appointment, ask questions anonymously and perform Search operations.)
