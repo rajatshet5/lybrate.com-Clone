@@ -27,3 +27,8 @@ Instructions to Run the Project:
 3) Sign up as a new User or a new Doctor by entering your details. 
 4) Login as a User or a Doctor and any of the above mentioned features can be performed.
 (Without Signing up / Logging in, a user can make a clinic booking appointment, ask questions anonymously and perform Search operations.)
+
+Sample email id and password to login as a Doctor without Signing up:
+
+-email: merlinpatrao@gmail.com
+-password: merlinpatrao 
