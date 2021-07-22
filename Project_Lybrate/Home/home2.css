@@ -1,7 +1,6 @@
 * {
   font-family: "Roboto", sans-serif;
   box-sizing: border-box;
-  max-width: 1280px;
 }
 body {
   background-color: #eee;
@@ -357,7 +356,6 @@ html {
   flex-wrap: wrap;
   white-space: nowrap;
   color: white;
-  max-width: 1280px;
   margin-bottom: 5%;
 }
 #contThree > h2 {
@@ -1052,7 +1050,6 @@ html {
   background-color: rgba(103, 103, 103, 255);
   margin: 0px;
   padding: 0px 20px;
-  max-width: 1280px;
 }
 
 #extras > div {
