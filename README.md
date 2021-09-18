@@ -1,6 +1,14 @@
 # lybrate.com-Clone
 
-
+<h2>
+ Demo
+ </h2>
+ 
+ <div>
+ https://lybrate-clone.vercel.app/Home/home2.html
+ </div>
+ 
+ <h2>Features</h2>
 This is a clone of lybrate.com.
 Lybrate is a health-tech company that provides an online platform to connect doctors and patients.
 We have implemented this using HTML, CSS and JavaScript.
