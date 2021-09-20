@@ -25,6 +25,8 @@ The project has the following functionalities:
 5) Search feature to search for Doctors by their name / specialty / city.
 6) Search feature to search for keywords in the questions that have been asked in the health feed page.
 
+## Screenshots
+![Home](/lybrate.com-Clone/Project_Lybrate/photos/home.png?raw=true "Landing")
 Instructions to Run the Project: 
 
 1) Clone the Project in any folder by using the following command in the terminal:
