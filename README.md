@@ -28,7 +28,8 @@ The project has the following functionalities:
 ## Screenshots
 ![Home](/lybrate.com-Clone/Project_Lybrate/photos/home.png?raw=true "Landing")
 Instructions to Run the Project: 
-
+![App Screenshot](/lybrate.com-Clone/Project_Lybrate/photos/home.png
+)
 1) Clone the Project in any folder by using the following command in the terminal:
 
  git clone https://github.com/rajatshet5/lybrate.com-Clone.git
