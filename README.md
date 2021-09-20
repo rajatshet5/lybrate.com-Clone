@@ -26,10 +26,10 @@ The project has the following functionalities:
 6) Search feature to search for keywords in the questions that have been asked in the health feed page.
 
 ## Screenshots
-![Home](/lybrate.com-Clone/Project_Lybrate/photos/home.png?raw=true "Landing")
+![home](https://user-images.githubusercontent.com/73219811/133971294-cbda8d8f-c41a-427c-9118-3a2fab98b915.png)
+
 Instructions to Run the Project: 
-![App Screenshot](/lybrate.com-Clone/Project_Lybrate/photos/home.png
-)
+
 1) Clone the Project in any folder by using the following command in the terminal:
 
  git clone https://github.com/rajatshet5/lybrate.com-Clone.git
