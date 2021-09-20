@@ -26,9 +26,12 @@ The project has the following functionalities:
 6) Search feature to search for keywords in the questions that have been asked in the health feed page.
 
 ## Screenshots
-![home](https://user-ima![appointment book](https://user-images.githubusercontent.com/73219811/133971635-bcd42aaa-2626-4b7b-8382-ad95da52c2ea.png)
-ges.githubusercontent.com/73219811/133971294-cbda8d8f-c41a-427c-9118-3a2fab98b915.png)
-![consult online](https://user-images.githubusercontent.com/73219811/133971649-8068a059-a47e-43f1-a0de-88009f80e426.png)
+![home](https://user-images.githubusercontent.com/73219811/133971752-f0fa1cb5-85ea-4504-bfc0-889e8e01895c.png)
+
+![appointment book](https://user-images.githubusercontent.com/73219811/133971765-3c4bd6cb-c6c2-481f-9832-413278cec0e9.png)
+
+
+![consult online](https://user-images.githubusercontent.com/73219811/133971777-8dc2b3d0-1571-4737-b651-c95182492557.png)
 
 Instructions to Run the Project: 
 
